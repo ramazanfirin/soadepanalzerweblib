@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="avea.bpm.arch.model">
+	<class 
+        name="SampleElementValue" 
+        table="NCA_SAMPLE_ELEMENT_VALUE">
+
+		<id name="id">
+			<column name="ID" not-null="true"/>
+			<generator class="sequence">
+				<param name="sequence">NCA_SEV_SEQUENCE</param>
+			</generator>
+		</id>		
+
+		<property name="elementName">
+			<column name="ELEMENT_NAME"/>
+		</property>
+		<property name="elementValue">
+			<column name="ELEMENT_VALUE"/>
+		</property>
+
+	</class>
+</hibernate-mapping>

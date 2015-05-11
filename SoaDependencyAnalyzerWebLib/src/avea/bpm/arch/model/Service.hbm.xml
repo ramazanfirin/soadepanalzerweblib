@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="avea.bpm.arch.model">
+	<class 
+        name="Service" 
+        table="NCA_SERVICE">
+		
+		<id name="id">
+			<column name="SERVICE_ID" not-null="true"/>
+			<generator class="sequence">
+				<param name="sequence">NCA_SERVICE_SEQUENCE</param>
+			</generator>
+		</id>		
+				
+		<property name="methodName">
+			<column name="METHOD_NAME"/>
+		</property>
+		<property name="controlName">
+			<column name="CONTROL_NAME"/>
+		</property>
+		<property name="controlPack">
+			<column name="CONTROL_PACK"/>
+		</property>
+		<property name="methodSignature">
+			<column name="METHOD_SIGNATURE"/>
+		</property>
+
+		<property name="name">
+			<column name="NAME"/>
+		</property>
+		<property name="description">
+			<column name="DESCRIPTION"/>
+		</property>
+		<property name="owner">
+			<column name="OWNER"/>
+		</property>
+		<property name="iwisName">
+			<column name="IWIS_NAME"/>
+		</property>
+		<property name="backendImplementation">
+			<column name="BACKEND_IMPL"/>
+		</property>
+		<property name="version">
+			<column name="VERSION"/>
+		</property>
+           
+		<set name="processes" table="NCA_PROCESS_SERVICE" inverse="true">
+			<key>
+				<column name="SERVICE_ID"/>
+			</key>
+			<many-to-many column="PROCESS_ID" class="avea.bpm.arch.model.Process"/>
+		</set>
+        
+	</class>
+</hibernate-mapping>

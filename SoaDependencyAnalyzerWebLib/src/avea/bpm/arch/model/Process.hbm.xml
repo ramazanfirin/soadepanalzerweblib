@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="avea.bpm.arch.model">
+	<class 
+        name="Process" 
+        table="NCA_PROCESS">
+		
+		<id name="id">
+			<column name="PROCESS_ID" not-null="true"/>
+			<generator class="sequence">
+				<param name="sequence">NCA_PROCESS_SEQUENCE</param>
+			</generator>
+		</id> 
+				
+		<property name="name">
+			<column name="NAME"/>
+		</property>
+		<property name="cvsHierarchy">
+			<column name="CVS_HIERARCHY"/>
+		</property>
+		<property name="description">
+			<column name="DECRIPTION"/>
+		</property>
+		<property name="iwisService">
+			<column name="IWIS_SERVICE"/>
+		</property>
+		<property name="returnCodes">
+			<column name="RETURN_CODES"/>
+		</property>
+		<property name="input">
+			<column name="INPUT"/>
+		</property>
+		<property name="output">
+			<column name="OUTPUT"/>
+		</property>
+		<property name="version">
+			<column name="VERSION"/>
+		</property>
+
+                
+		<set name="services" table="NCA_PROCESS_SERVICE" cascade="all">
+			<key>
+				<column name="PROCESS_ID"/>
+			</key>
+			<many-to-many column="SERVICE_ID" class="avea.bpm.arch.model.Service"/>
+		</set>
+        
+	</class>
+</hibernate-mapping>

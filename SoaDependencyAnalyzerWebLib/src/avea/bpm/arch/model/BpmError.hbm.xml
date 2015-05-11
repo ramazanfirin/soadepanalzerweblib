@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="avea.bpm.arch.model">
+	<class 
+        name="BpmError" 
+        table="BPM_ERROR">
+		
+		<id name="errorCode">
+			<column name="ERRORCODE" not-null="true"/>
+			<generator class="assigned"></generator>
+		</id>		
+				
+		<property name="error">
+			<column name="ERROR"/>
+		</property>
+		<property name="description">
+			<column name="DESCRIPTION"/>
+		</property>
+        
+	</class>
+</hibernate-mapping>
